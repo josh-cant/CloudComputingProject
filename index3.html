@@ -1,0 +1,163 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+
+
+  <style>
+	* {
+	  box-sizing: border-box;
+	}
+
+	body {
+	  font-family: Arial, Helvetica, sans-serif;
+	  margin: 0;
+	}
+
+	.header {
+	  padding: 80px;
+	  text-align: center;
+	  background: #88dffa;
+	  color: black;
+	}
+
+	.header h1 {
+	  font-size: 40px;
+	}
+
+	.footer {
+	  text-align: center;
+	  background-color: gray;
+	  color: black;
+	  padding: 20px;
+	}
+
+	.navbar {
+	  overflow: hidden;
+	  background-color: #333;
+	  position: sticky;
+	  position: -webkit-sticky;
+	  top: 0;
+	}
+
+	.navbar a {
+	  float: left;
+	  display: block;
+	  color: white;
+	  text-align: center;
+	  padding: 14px 20px;
+	  text-decoration: none;
+	}
+
+	.navbar a:hover {
+	  background-color: #ddd;
+	  color: black;
+	}
+
+	.navbar a.active {
+	  background-color: #666;
+	  color: white;
+	}
+
+	.row {  
+	  display: -ms-flexbox; 
+	  display: flex;
+	  -ms-flex-wrap: wrap; 
+	  flex-wrap: wrap;
+	}
+
+	.side {
+	  -ms-flex: 30%;
+	  flex: 30%;
+	  background-color: #f1f1f1;
+	  padding: 20px;
+	}
+
+	.pad {
+	  padding: 20px;
+	}
+	
+	.bigpad {
+	  padding: 40px;
+	}
+
+	.image_box {
+		text-align: center;
+	}
+
+	.center {
+		text-align: center;
+		align-content: center;
+	}
+	
+	.block {
+	  display: block;
+	  margin-left: auto;
+	  margin-right: auto;
+	  width: 40%;
+	}
+	
+  </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Fun Stuff</h1>
+      <p>Random things you might enjoy.</p>
+    </div>
+
+    <div class="navbar">
+      <a href="index.html" >Home</a>
+      <a href="indexQT.html" >Quad Tree</a>
+      <a href="index3.html" class="active" >Quiz</a>
+    </div>
+	<div class="pad">
+	<h2>Things everyone should know:</h2>
+
+	<h3>What is the best food in the world?</h3>
+	<button onclick="callLambdaFunction1()">Answer</button>
+	<p><div id="myDiv1"></div></p>	
+	
+	<h3>Long long does it take light to travel from the sun to Earth?</h3>
+	<button onclick="callLambdaFunction2()">Answer</button>
+	<p><div id="myDiv2"></div></p>
+	
+	<h3>On average, how many hairs on on the human head?</h3>
+	<button onclick="callLambdaFunction3()">Answer</button>
+	<p><div id="myDiv3"></div></p>
+	
+	<div class="footer">
+	  <p>Joshua Cantera - Cloud Computing Final Project</p>
+	</div>
+	</div>
+			<script>
+		async function callLambdaFunction1() {
+			fetch( 'https://div2lnbgmf.execute-api.us-east-1.amazonaws.com/WebsiteAnswer1', {
+				method: 'GET'
+			  })
+			.then(response => response.json())
+			.then((response) => {
+				console.log(response);
+				document.getElementById("myDiv1").innerHTML = response.body;
+			});
+		}
+		async function callLambdaFunction2() {
+			fetch( 'https://mvhjlbfq09.execute-api.us-east-1.amazonaws.com/WebsiteAnswer2' , {
+				method: 'GET'
+			  })
+			.then(response => response.json())
+			.then((response) => {
+				console.log(response);
+				document.getElementById("myDiv2").innerHTML = response.body;
+			});
+		}
+		async function callLambdaFunction3() {
+			fetch( 'https://5i2hqcs0hc.execute-api.us-east-1.amazonaws.com/WebsiteAnswer3' , {
+				method: 'GET'
+			  })
+			.then(response => response.json())
+			.then((response) => {
+				console.log(response);
+				document.getElementById("myDiv3").innerHTML = response.body;
+			});
+		}
+	</script>
+  </body>
+</html>
