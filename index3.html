@@ -113,15 +113,20 @@
 
 	<h3>What is the best food in the world?</h3>
 	<button onclick="callLambdaFunction1()">Answer</button>
-	<p><div id="myDiv1"></div></p>	
+	<div id="myDiv1"></div>
 	
-	<h3>Long long does it take light to travel from the sun to Earth?</h3>
+	<h3>How long does it take light to travel from the sun to Earth?</h3>
 	<button onclick="callLambdaFunction2()">Answer</button>
-	<p><div id="myDiv2"></div></p>
+	<div id="myDiv2"></div>
 	
 	<h3>On average, how many hairs on on the human head?</h3>
 	<button onclick="callLambdaFunction3()">Answer</button>
-	<p><div id="myDiv3"></div></p>
+	<div id="myDiv3"></div>
+	
+	<h3>Did you know any of these fun facts?</h3>
+	<button id="post" onclick="WriteCount()">Yes</button>
+	<button>No</button>
+	<h4>People who knew one of these facts: <span id="count"></span></h4>
 	
 	<div class="footer">
 	  <p>Joshua Cantera - Cloud Computing Final Project</p>
@@ -158,6 +163,28 @@
 				document.getElementById("myDiv3").innerHTML = response.body;
 			});
 		}
+		async function ReadCount() {
+			fetch( 'https://gy6ap1uc0f.execute-api.us-east-1.amazonaws.com/ProjProd',  {
+				method: 'GET'
+			})
+			.then(response => response.json())
+			.then((response) => {
+				console.log(response);
+				document.getElementById("count").innerHTML = response.body.Count;
+			});
+		}
+		async function WriteCount() {
+			fetch( 'https://vc1tylcgxa.execute-api.us-east-1.amazonaws.com/ProjProd',  {
+				method: 'POST'
+			})
+			.then(response => response.json())
+			.then((response) => {
+				console.log(response);
+				//document.getElementById("post").disabled = true;
+				ReadCount();
+			});
+		}
+		window.onload = ReadCount();
 	</script>
   </body>
 </html>
