@@ -1,5 +1,0 @@
-WebsiteAnswer1 -> Lambda Function Answer1
-
-WebsiteAnswer2 -> Lambda Function Answer2
-
-WebsiteAnswer3 -> Lambda Function Answer3
